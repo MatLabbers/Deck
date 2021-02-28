@@ -18,12 +18,12 @@ if playerNum==1
         player1Bet=input('\nPlease enter bet amount');
         
         %checks if player 1 enter correct bet amount
-        while player1Bet==0 | player1Bet> player1Chips | player1Bet<0
+        while player1Bet==0 | player1Bet > player1Chips | player1Bet<0
             if player1Bet>player1Chips
                 fprintf('\n Your bet is greater than your chips!');
                 player1Bet=input('\n Please enter bet amount');
             elseif player1Bet==0
-                fprintf('\n Your bet is must be greater than 0 chips!');
+                fprintf('\n Your bet must be greater than 0 chips!');
                 player1Bet=input('\n Please enter bet amount');
             elseif player1Bet<0
                 fprintf('\n Your bet must be a positive number!');
