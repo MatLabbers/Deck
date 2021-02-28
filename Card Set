@@ -1,21 +1,22 @@
 function [scores_final] = untitled112(~)
 
-Suit = ["Diamond","Hearts","Clubs","Spades"];
-Values = ["1", "2", "3", "4","5","6","7","8","9","10","Jack","Queen","King"];
+Suit = ["Diamond", "Hearts", "Clubs", "Spades"];
+Values = ["1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "Jack", "Queen", "King"];
 
 
-k=1;
+k = 1;
 for i = 1:length(Suit)
-    for j=1:length(Values)
-        Deck(k)=strcat(Suit(i),Values(j));
-        k=k+1;
+    for j = 1:length(Values)
+        Deck(k) = strcat(Suit(i), Values(j));
+        k = k + 1;
     end
 end
+
 %disp(Deck);
 output = randsample(Deck,2)
 score = [1,2,3,4,5,6,7,8,9,10,10,10,10,1,2,3,4,5,6,7,8,9,10,10,10,10,1,2,3,4,5,6,7,8,9,10,10,10,10,1,2,3,4,5,6,7,8,9,10,10,10,10];
 
-for i=1:length(output)
+for i = 1:length(output)
 lxn(i) = find(output(i)==Deck);
 lin(i) = score(lxn(i)) ;
 end
