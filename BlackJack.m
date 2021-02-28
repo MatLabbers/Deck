@@ -32,15 +32,15 @@ if playerNum==1
         end
         
         %randomly assign two cards to player and dealer
-   player1Hand=randsample(10,2)
-   dealerHand=randsample(10,2);
+player1Hand=randsample(10,2)
+dealerHand=randsample(10,2);
         
         %show total of player and dealer's hand
-   player1Total=sum(player1Hand)
-   dealerTotal=sum(dealerHand);
+player1Total=sum(player1Hand)
+dealerTotal=sum(dealerHand);
    
         %Player 1 chooses to hit or stay
-   player1Choice=input('Hit(2) or Stay(3)');
+player1Choice=input('Hit(2) or Stay(3)');
    
         %See if player 1 busts and adds to hand
         hit=0;
