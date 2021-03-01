@@ -1,8 +1,5 @@
-function [scores_final] = untitled112(~)
-
 Suit = ["Diamond", "Hearts", "Clubs", "Spades"];
 Values = ["1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "Jack", "Queen", "King"];
-
 
 k = 1;
 for i = 1:length(Suit)
@@ -12,16 +9,42 @@ for i = 1:length(Suit)
     end
 end
 
+
+function [] = test11(~)
+
+show = 'Type "Play" to start the game: ';
+input1 = input(show,'s');
+
+if isequal(input1,'Play')
+    score = "Game has started! Your cards have been dealt.";
+    disp(score)
+    hand = randsample(cardset,2)
+    promt1 = 'choose to "hit" or "stand": ';
+    %disp(promt1)
+    input2 = input(promt1, 's');
+    hand = [hand, randsample(cardset,1)]
+    end
+    return;
+else
+    score = "Error";
+    disp(score)
+    return;  
+end
+
+end
+
+
+function [scores_final] = untitled112(hand)
+
 %disp(Deck);
-output = randsample(Deck,2)
 score = [1,2,3,4,5,6,7,8,9,10,10,10,10,1,2,3,4,5,6,7,8,9,10,10,10,10,1,2,3,4,5,6,7,8,9,10,10,10,10,1,2,3,4,5,6,7,8,9,10,10,10,10];
 
-for i = 1:length(output)
-lxn(i) = find(output(i)==Deck);
+for i = 1:length(hand)
+lxn(i) = find(hand(i)==Deck);
 lin(i) = score(lxn(i)) ;
 end
+
 %disp(lxn)
 scores_final = sum(lin);
-
 
 end
