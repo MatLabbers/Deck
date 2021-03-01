@@ -23,8 +23,8 @@ if isequal(input1,'Play')
     %disp(promt1)
     input2 = input(promt1, 's');
     hand = [hand, randsample(cardset,1)]
-    end
     return;
+    
 else
     score = "Error";
     disp(score)
