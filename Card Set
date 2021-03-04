@@ -1,50 +1,77 @@
-Suit = ["Diamond", "Hearts", "Clubs", "Spades"];
-Values = ["1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "Jack", "Queen", "King"];
-
-k = 1;
-for i = 1:length(Suit)
-    for j = 1:length(Values)
-        Deck(k) = strcat(Suit(i), Values(j));
-        k = k + 1;
-    end
-end
 
 
-function [] = test11(~)
+function [] = untitled112(~)
 
+
+%disp(Deck)
 show = 'Type "Play" to start the game: ';
 input1 = input(show,'s');
 
 if isequal(input1,'Play')
-    score = "Game has started! Your cards have been dealt.";
-    disp(score)
-    hand = randsample(cardset,2)
-    promt1 = 'choose to "hit" or "stand": ';
-    %disp(promt1)
-    input2 = input(promt1, 's');
-    hand = [hand, randsample(cardset,1)]
-    return;
+    test = "Game has started";
+    disp(test)
+    Suit = ["Diamond","Hearts","Clubs","Spades"];
+    Values = ["1", "2", "3", "4","5","6","7","8","9","10","Jack","Queen","King"];
+    
+    
+    k=1;
+    for i = 1:length(Suit)
+        for j=1:length(Values)
+            Deck(k)=strcat(Suit(i),Values(j));
+            k=k+1;
+        end
+    end
+    score = [1,2,3,4,5,6,7,8,9,10,10,10,10,1,2,3,4,5,6,7,8,9,10,10,10,10,1,2,3,4,5,6,7,8,9,10,10,10,10,1,2,3,4,5,6,7,8,9,10,10,10,10];
+    CurrentHand = randsample(Deck,2)
+    for i=1:length(CurrentHand)
+        lxn(i) = find(CurrentHand(i)==Deck);
+        lin(i) = score(lxn(i));
+    end
+    initialscore = sum(lin);
+    
+    CurrentScore = initialscore
+    
+    
+    
+    Deck(lxn)=[];
+    while (CurrentScore<=21)
+        promt1 = 'choose to "hit" or "stand":';
+        input2 = input(promt1, 's');
+        
+        if isequal(input2,'hit')
+            CurrentHand(end+1)=randsample(Deck,1);
+            CurrentHand
+            k=find(CurrentHand(end)==Deck);
+            lin(end+1)=score(k);
+            initialscore = sum(lin);
+            CurrentScore = initialscore
+            Deck(k)=[];
+        elseif isequal(input2,'stand')
+            fprintf("Your final score is: %d\n",CurrentScore)
+            break;
+        end
+        if CurrentScore>21
+            disp('LOSE')
+            break
+        end
+        
+        
+    end
+    
+    %code
+    
+    
+    
     
 else
-    score = "Error";
-    disp(score)
-    return;  
+    test = "Error";
+    disp(test)
+    return;
+    
 end
 
-end
-
-
-function [scores_final] = untitled112(hand)
-
-%disp(Deck);
-score = [1,2,3,4,5,6,7,8,9,10,10,10,10,1,2,3,4,5,6,7,8,9,10,10,10,10,1,2,3,4,5,6,7,8,9,10,10,10,10,1,2,3,4,5,6,7,8,9,10,10,10,10];
-
-for i = 1:length(hand)
-lxn(i) = find(hand(i)==Deck);
-lin(i) = score(lxn(i)) ;
-end
-
-%disp(lxn)
-scores_final = sum(lin);
 
 end
+
+
+
