@@ -1,4 +1,7 @@
-
+% ThingSpeak info
+channelID = 1314677
+writeAPIkey = L4612JYS9NZB9JYI
+readAPIkey = R99LNC0S239Q3MEX
 
 function [] = untitled112(~)
 
