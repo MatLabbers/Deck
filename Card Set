@@ -3,19 +3,20 @@ channelID = 1314677
 writeAPIkey = L4612JYS9NZB9JYI
 readAPIkey = R99LNC0S239Q3MEX
 
-function [] = untitled112(~)
 
 
-% Start the game
+function [] = BlackJack(~)
+
+
+
 show = 'Type "Play" to start the game: ';
 input1 = input(show,'s');
 
-% Create deck
 if isequal(input1,'Play')
     test = "Game has started";
     disp(test)
     Suit = ["Diamond","Hearts","Clubs","Spades"];
-    Values = ["1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "Jack", "Queen", "King"];
+    Values = ["1", "2", "3", "4","5","6","7","8","9","10","Jack","Queen","King"];
     
     
     k=1;
@@ -31,15 +32,27 @@ if isequal(input1,'Play')
         lxn(i) = find(CurrentHand(i)==Deck);
         lin(i) = score(lxn(i));
     end
+    
     initialscore = sum(lin);
+    CurrentScore = initialscore;
+    Deck(lxn)=[];
+    score(lxn)=[];
     
-    CurrentScore = initialscore
+    
+    DealerHand=randsample(Deck,2);
+    for i=1:length(DealerHand)
+        dealtest(i) = find(DealerHand(i)==Deck);
+        testdeal(i) = score(dealtest(i));
+    end
+    DealerScore = sum(testdeal);
     
     
+    ShowDealerHand = [DealerHand(1),"Hidden"]
     
     Deck(lxn)=[];
+    score(lxn)=[];
     while (CurrentScore<=21)
-        promt1 = 'choose to "hit" or "stand":';
+        promt1 = 'choose to "hit" or "stand": ';
         input2 = input(promt1, 's');
         
         if isequal(input2,'hit')
@@ -48,23 +61,51 @@ if isequal(input1,'Play')
             k=find(CurrentHand(end)==Deck);
             lin(end+1)=score(k);
             initialscore = sum(lin);
-            CurrentScore = initialscore
+            CurrentScore = initialscore;
             Deck(k)=[];
+            score(k)=[];
         elseif isequal(input2,'stand')
-            fprintf("Your final score is: %d\n",CurrentScore)
+            disp("Your final hand is: ")
+            disp(CurrentHand)
+            %   disp(CurrentScore)
+            disp("Revealed dealers hand is: ")
+            disp(DealerHand)
+            %   disp(DealerScore)
+            
+            while(DealerScore<CurrentScore)
+                DealerHand(end+1)=randsample(Deck,1);
+                %DealerHand;
+                k=find(DealerHand(end)==Deck);
+                %   testdeal
+                testdeal(end+1)=score(k);
+                DealerScore = sum(testdeal);
+                % DealerHand = DealerScore;
+                Deck(k)=[];
+                score(k)=[];
+                disp(DealerHand)
+                %disp(DealerScore)
+            end
+            
+            if (DealerScore>21)
+                disp("WIN")
+                break;
+            end
+            
+            if (DealerScore>CurrentScore)
+                disp("LOSS")
+            elseif (DealerScore<CurrentScore)
+                disp("WIN")
+            elseif (DealerScore==CurrentScore)
+                disp("DRAW")
+            end
+            
             break;
         end
         if CurrentScore>21
             disp('LOSE')
             break
         end
-        
-        
     end
-    
-    %code
-    
-    
     
     
 else
@@ -76,6 +117,9 @@ end
 
 
 end
+
+
+
 
 
 
