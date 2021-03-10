@@ -3,15 +3,16 @@
 function [] = untitled112(~)
 
 
-%disp(Deck)
+% Start the game
 show = 'Type "Play" to start the game: ';
 input1 = input(show,'s');
 
+% Create deck
 if isequal(input1,'Play')
     test = "Game has started";
     disp(test)
     Suit = ["Diamond","Hearts","Clubs","Spades"];
-    Values = ["1", "2", "3", "4","5","6","7","8","9","10","Jack","Queen","King"];
+    Values = ["1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "Jack", "Queen", "King"];
     
     
     k=1;
